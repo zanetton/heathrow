@@ -1,4 +1,5 @@
 require 'airport'
+require 'plane'
 
 ## Note these are just some guidelines!
 ## Feel free to write more tests!!
@@ -13,22 +14,32 @@ require 'airport'
 
 describe Airport do
 
-  describe 'take off' do
-    xit 'instructs a plane to take off'
-
-    xit 'releases a plane'
-  end
-
   describe 'landing' do
-    xit 'instructs a plane to land'
-
-    xit 'receives a plane'
+    it 'receives a plane'do
+      plane = Plane.new
+      airport = Airport.new
+      airport.accept(plane)
+      expect(airport.plane_count).to eq(1)
+    end
   end
+    describe 'take off' do
+     it 'releases a plane' do
+      airport = Airport.new
+      plane = @planes
+      airport.release(plane)
+      expect(airport.plane_count).to eq(0)
+    end
+  end
+
 
   describe 'traffic control' do
     context 'when airport is full' do
-      xit 'does not allow a plane to land'
+      it 'does not allow a plane to land'do
+      planes.count = 6
+      expect(airport.accept(plane).to raise_error
+      end
     end
+  end
 
     # Include a weather condition.
     # The weather must be random and only have two states "sunny" or "stormy".
@@ -44,5 +55,4 @@ describe Airport do
 
       xit 'does not allow a plane to land'
     end
-  end
 end
